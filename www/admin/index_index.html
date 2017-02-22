@@ -1,0 +1,131 @@
+<section class="content-header">
+    <h1>
+        系统首页
+        <small></small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>0</h3>
+
+                    <p>新订单</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="{:U('Admin/content/content',array('status'=>0))}" class="small-box-footer">更多详情 <i
+                        class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>0</h3>
+
+                    <p>新销售额</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="{:U('Admin/Order/order',array('status'=>0))}" class="small-box-footer">更多详情 <i
+                        class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>0</h3>
+
+                    <p>总用户</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-stalker"></i>
+                </div>
+                <a href="#" class="small-box-footer">&nbsp;</a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>0</h3>
+
+                    <p>总订单</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-connection-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">&nbsp;</a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+
+    <div class="row">
+        <!-- /.col -->
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">系统公告</h3>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="table-responsive" style="overflow-x: visible;">
+                        <table class="table table-bordered table-hover">
+                            <tbody id="notify">
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.mail-box-messages -->
+                </div>
+            </div>
+            <!-- /. box -->
+        </div>
+        <!-- /.col -->
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">系统信息</h3>
+                </div>
+                <div class="box-body">
+                    <blockquote style="font-size: 13.5px;">程序版本：koahub软件市场<br/>
+                        更新时间：2016/7/26<br/>
+                        服务器IP：<br/>
+                        服务器系统：
+                        <php>node</php>
+                        <br/>
+                        node版本：
+                        <php>4.4.4</php>
+                        <br/>
+                        当前时间：
+                        <php></php>
+                        <br/>
+                        官网网址：http://www.koahub.com<br/>
+                    </blockquote>
+                    <blockquote style="margin-top: 20px">
+                        <p>
+                            Better for life
+                        </p>
+                        <small>AI.何青.Better</small>
+                    </blockquote>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</section>

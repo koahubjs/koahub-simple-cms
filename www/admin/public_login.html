@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>KoaHub管理后台</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="/admin/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/admin/dist/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/admin/dist/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/admin/dist/css/AdminLTE-admin.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="/admin/plugins/iCheck/square/blue.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/admin/dist/js/html5shiv.min.js"></script>
+    <script src="/admin/dist/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition login-page" style="background-image:url('/public/wallpage/bg_{{random 1 8}}.jpg');background-size: cover;">
+<div class="login-box">
+
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <div class="login-logo" style="margin: 30px 10px">
+            <img src="/admin/dist/img/logo.png">
+        </div>
+
+        <form action="/admin/public/login" method="post">
+            <div class="form-group text-danger wrapper text-center" id="err">
+                {{err}}
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" placeholder="用户名" name="username">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" placeholder="密码" name="password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" placeholder="验证码" name="verify"
+                       style="width: 70%;float: left">
+                <img id="changeVerity" src="/admin/public/verify"
+                     style="width: 30%;border: 1px solid #ccc;height: 34px;border-left: 0px">
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox"> 记住我
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+
+        <!-- /.social-auth-links -->
+    </div>
+    <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+<div class="common_footer">Powered by KoaHub | Copyright © <a href="http://www.koahub.com/"
+                                                              target="_blank">koahub.com</a>
+    All rights reserved.
+</div>
+
+<!-- jQuery 2.1.4 -->
+<script src="/admin/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="/admin/bootstrap/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="/admin/plugins/iCheck/icheck.min.js"></script>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+        $('#changeVerity').click(function () {
+            $(this).attr('src', '/admin/public/verify?'+Math.random());
+        });
+
+        $('input').focus(function () {
+            $('#err').html('');
+        });
+    });
+
+    $('#err').html(getQueryString("err"));
+
+    function getQueryString(key){
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var result = window.location.search.substr(1).match(reg);
+        return result?decodeURIComponent(result[2]):null;
+    }
+</script></body>
+</html>

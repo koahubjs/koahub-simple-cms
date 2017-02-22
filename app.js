@@ -1,0 +1,1 @@
+require('koahub-cli').run('start app/index.js --compile --watch');

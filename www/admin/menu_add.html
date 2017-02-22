@@ -1,0 +1,136 @@
+<section class="content-header">
+    <h1>
+        商城管理
+        <small></small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">新增菜单</h3>
+                </div>
+                <!-- form start -->
+                <form class="form-horizontal" action="/admin/menu/add" method="post">
+                    <div class="box-body">
+                        <input class="form-control" name="id" placeholder="" value="{{menu.id}}"
+                               type="hidden">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">名称</label>
+
+                            <div class="col-sm-10">
+                                <input class="form-control" name="name" placeholder="" value="{{menu.name}}"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">类型</label>
+
+                            <div class="col-md-7">
+                                <label class="radio-inline"><input name="type" type="radio"
+                                                                   {{#eq menu.type 1}}checked="checked" {{/eq}}
+                                    value="1"><span>产品</span></label>
+                                <label class="radio-inline"><input name="type" type="radio"
+                                                                   {{#eq menu.type 2}}checked="checked" {{/eq}}
+                                    value="2"><span>公司</span></label>
+                                <label class="radio-inline"><input name="type" type="radio"
+                                                                   {{#eq menu.type 3}}checked="checked" {{/eq}}
+                                    value="3"><span>案例</span></label>
+                                <label class="radio-inline"><input name="type" type="radio"
+                                                                   {{#eq menu.type 4}}checked="checked" {{/eq}}
+                                    value="4"><span>联系电话</span></label>
+                                <label class="radio-inline"><input name="type" type="radio"
+                                                                   {{#eq menu.type 5}}checked="checked" {{/eq}}
+                                    value="5"><span>友情链接</span></label>
+                                <label class="radio-inline"><input name="type" type="radio"
+                                                                   {{#eq menu.type 6}}checked="checked" {{/eq}}
+                                    value="6"><span>关注我们</span></label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">链接</label>
+
+                            <div class="col-sm-10">
+                                <input class="form-control" name="url" placeholder="" value="{{menu.url}}"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">图片</label>
+
+                            <div class="col-sm-10">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new img-thumbnail">
+                                        {{#gt menu.file_id 0}}
+                                        <img src="/public/uploads/{{menu.file.savepath}}{{menu.file.savename}}">
+                                        {{else}}
+                                        <img src="/admin/dist/img/noimage.gif">
+                                        {{/gt}}
+
+                                        <input class="form-control" name="file_id" id="file_id" placeholder=""
+                                               value="{{menu.file_id}}"
+                                               type="hidden">
+
+                                        <div class="edit_pic_mask">
+                                            <i class="fa fa-plus-circle" onclick="imageUploader(this,false)"></i>
+                                            <i class="fa fa-minus-circle" onclick="removeImage(this,false)"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">状态</label>
+
+                            <div class="col-md-7">
+                                <label class="radio-inline"><input name="status" type="radio"
+                                                                   {{#eq menu.status 1}}checked="checked" {{/eq}}
+                                    value="1"><span>开启</span></label>
+                                <label class="radio-inline"><input name="status" type="radio"
+                                                                   {{#eq menu.status 0}}checked="checked" {{/eq}}
+                                    value="0"><span>关闭</span></label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">排序</label>
+
+                            <div class="col-sm-10">
+                                <input class="form-control" name="rank" placeholder="" value="{{menu.rank}}"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">备注</label>
+
+                            <div class="col-sm-10">
+                                <input class="form-control" name="remark" placeholder="" value="{{menu.remark}}"
+                                       type="text">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-block btn-danger">保存</button>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-block btn-default" onclick="history.go(-1)">取消</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+    </div>
+</section>

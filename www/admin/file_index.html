@@ -1,0 +1,33 @@
+<div id="dialog-imageUploader">
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="row" style="border-bottom:1px solid #f4f4f4;">
+            <div class="margin pull-right">
+                <form action="/admin/file/add" id="myForm" method="post">
+                    <div class="btn btn-success" style="cursor: pointer">本地上传</div>
+                    <input type="file" id="file" name="file[]" multiple="multiple" onchange="ajaxForm()"
+                           style="margin-top: -30px;width: 82px;height: 34px;opacity: 0;cursor: pointer;"/>
+                </form>
+            </div>
+        </div>
+        <div class="row" id="dialog-content">
+
+            {{#each file}}
+            <div class="margin" style="width: 120px;height: 120px;float: left;text-align: center;line-height: 120px;">
+                <img class="img-thumbnail" style="max-width: 120px; max-height: 120px;"
+                     onclick="selectImage(this,'{{id}}')"
+                     src="/public/uploads/{{savepath}}{{savename}}">
+
+                <div class="cover" onclick="cancelSelectImage(this,'{{id}}')"></div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix">
+        {{{page}}}
+    </div>
+</div>
+<script type="text/javascript">
+    $('#dialog-imageUploader .pagination a[href]').attr('onclick', 'tabPage(this)');
+</script>

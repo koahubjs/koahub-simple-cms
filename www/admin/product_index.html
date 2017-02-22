@@ -1,0 +1,130 @@
+<section class="content-header">
+    <h1>
+        内容管理
+        <small></small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <!-- /.col -->
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">商品管理</h3>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="mailbox-controls">
+                        <div class="btn-group">
+                            <a href="/admin/product/add" class="btn btn-danger ">
+                                新增商品
+                            </a>
+                        </div>
+                        <!-- /.btn-group -->
+                    </div>
+                    <div class="table-responsive" style="overflow-x: visible;">
+                        <table class="table table-bordered table-hover">
+                            <tbody>
+                            <tr>
+                                <th class="hidden-xs">
+                                    <label><input onchange="checkAll()" type="checkbox" value=""></label>
+                                </th>
+                                <th>ID</th>
+                                <th>类型</th>
+                                <th>名称</th>
+                                <th>链接</th>
+                                <th>图片</th>
+                                <th>状态</th>
+                                <th>排序</th>
+                                <th>操作</th>
+                            </tr>
+
+                            {{#each product}}
+                                <tr>
+                                    <td class="hidden-xs">
+                                        <label><input name="checkbox" class="check" type="checkbox"
+                                                      value="{{id}}"></label>
+                                    </td>
+                                    <td>{{id}}</td>
+                                    <td>
+                                        {{#eq type 0}}
+                                        <span class="label label-primary">产品解决方案</span>
+                                        {{/eq}}
+
+                                        {{#eq type 1}}
+                                        <span class="label label-info">软件推荐</span>
+                                        {{/eq}}
+
+                                    </td>
+                                    <td>{{ellipsis name 10}}</td>
+                                    <td>{{url}}</td>
+                                    <td>
+                                        <div class="btn-group" style="margin: 0px">
+                                            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                图片<span class="caret"></span></button>
+                                            <div class="dropdown-menu">
+                                                <img style="height: 200px"
+                                                     src="/public/uploads/{{file.savepath}}{{file.savename}}">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{#eq status 1}}
+                                        <span class="label label-success">开启</span>
+                                        {{/eq}}
+
+                                        {{#eq status 0}}
+                                        <span class="label label-default">关闭</span>
+                                        {{/eq}}
+
+                                        {{#eq status -1}}
+                                        <span class="label label-default">拒绝</span>
+                                        {{/eq}}
+                                    </td>
+                                    <td>{{rank}}</td>
+                                    <td class="table-action">
+                                        <a href="/admin/product/add?id={{id}}">编辑</a>
+                                        {{#eq status 1}}
+                                            <a href="/admin/product/update?id={{id}}&status=0">关闭</a>
+                                        {{else}}
+                                            <a href="/admin/product/update?id={{id}}&status=1">开启</a>
+                                        {{/eq}}
+                                    </td>
+                                </tr>
+                            {{/each}}
+
+                            </tbody>
+                        </table>
+                        <div class="box-footer no-padding">
+                            <div class="mailbox-controls">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-danger "
+                                            onclick="batchUrl('/admin/product/update?status=1')">开启
+                                    </button>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-danger "
+                                            onclick="batchUrl('/admin/product/update?status=0')">
+                                        关闭
+                                    </button>
+                                </div>
+                                <div class="pull-right">
+                                    {{{page}}}
+                                </div>
+                            </div>
+                            <!-- /.btn-group -->
+                            <!-- /.pull-right -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /.mail-box-messages -->
+            </div>
+        </div>
+        <!-- /. box -->
+    </div>
+    <!-- /.col -->
+    </div>
+</section>

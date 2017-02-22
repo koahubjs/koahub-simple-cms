@@ -1,0 +1,140 @@
+<section class="content-header">
+    <h1>
+        商城管理
+        <small></small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">新增导航</h3>
+                </div>
+                <!-- form start -->
+                <form class="form-horizontal" action="/admin/nav/add" method="post">
+                    <div class="box-body">
+                        <input class="form-control" name="id" placeholder="" value="{{nav.id}}"
+                               type="hidden">
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">上级导航</label>
+
+                            <div class="col-sm-10">
+                                <select name="pid" class="form-control">
+                                    <option value="0" {{#eq nav.pid 0}}selected{{/eq}}>一级导航</option>
+
+                                    {{#each parent}}
+                                    <option value="{{id}}" {{#eq ../nav.pid id}}selected{{/eq}}>{{name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">名称</label>
+
+                            <div class="col-sm-10">
+                                <input class="form-control" name="name" placeholder="" value="{{nav.name}}"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">类型</label>
+
+                            <div class="col-md-7">
+                                <label class="radio-inline"><input name="type" type="radio"
+                                                                   {{#eq nav.type 0}}checked="checked" {{/eq}}
+                                    {{#unless nav.type}}checked="checked"{{/unless}}
+                                    value="0"><span>官网</span></label>
+                                <label class="radio-inline"><input name="type" type="radio"
+                                                                   {{#eq nav.type 1}}checked="checked" {{/eq}}
+                                    value="1"><span>cms</span></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">链接</label>
+
+                            <div class="col-sm-10">
+                                <input class="form-control" name="url" placeholder="" value="{{nav.url}}"
+                                       type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">图片</label>
+
+                            <div class="col-sm-10">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new img-thumbnail">
+                                        {{#gt nav.file_id 0}}
+                                        <img src="/public/uploads/{{nav.file.savepath}}{{nav.file.savename}}">
+                                        {{else}}
+                                        <img src="/admin/dist/img/noimage.gif">
+                                        {{/gt}}
+
+                                        <input class="form-control" name="file_id" id="file_id" placeholder=""
+                                               value="{{nav.file_id}}"
+                                               type="hidden">
+
+                                        <div class="edit_pic_mask">
+                                            <i class="fa fa-plus-circle" onclick="imageUploader(this,false)"></i>
+                                            <i class="fa fa-minus-circle" onclick="removeImage(this,false)"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">状态</label>
+
+                            <div class="col-md-7">
+                                <label class="radio-inline"><input name="status" type="radio"
+                                                                   {{#eq nav.status 1}}checked="checked" {{/eq}}
+                                    {{#unless nav.status}}checked="checked"{{/unless}}
+                                    value="1"><span>开启</span></label>
+                                <label class="radio-inline"><input name="status" type="radio"
+                                                                   {{#eq nav.status 0}}checked="checked" {{/eq}}
+                                    value="0"><span>关闭</span></label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">排序</label>
+
+                            <div class="col-sm-10">
+                                <input class="form-control" name="rank" placeholder="" value="{{nav.rank}}"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">备注</label>
+
+                            <div class="col-sm-10">
+                                <input class="form-control" name="remark" placeholder="" value="{{nav.remark}}"
+                                       type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-block btn-danger">保存</button>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-block btn-default" onclick="history.go(-1)">取消</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+    </div>
+</section>
