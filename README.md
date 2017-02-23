@@ -27,6 +27,7 @@ npm start
 
 ```javascript
 http://localhost:3000
+// 默认后台账号密码 admin/admin
 ```
 
 ## 官网
