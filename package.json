@@ -1,6 +1,6 @@
 {
   "name": "koahub-simple-cms",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "koahub-simple-cms",
   "main": "app.js",
   "scripts": {
@@ -24,10 +24,6 @@
     "fs-promise": "^1.0.0",
     "handlebars-helpers": "^0.8.0",
     "knex": "^0.12.6",
-    "koa-body": "^1.6.0",
-    "koa-convert": "^1.2.0",
-    "koa-session2": "^1.0.8",
-    "koa-static": "^2.1.0",
     "koahub": "github:koahubjs/koahub",
     "koahub-cli": "github:koahubjs/koahub-cli",
     "koahub-handlebars": "github:koahubjs/koahub-handlebars",

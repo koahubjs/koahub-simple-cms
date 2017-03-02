@@ -3,6 +3,14 @@ export default {
     default_module: 'admin',
     pageNum: 25,
 
+    session: {
+    	key: 'koahub.js'
+    },
+
+    static: {
+        dir: 'www'
+    },
+
     loader: {
         "models": {
             root: 'model',
