@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node app.js"
   },
+  "engines": {
+    "node": ">= 7.6.0"
+  },
   "keywords": [
     "web",
     "app",
