@@ -1,6 +1,6 @@
 import base from "./base.controller";
 import LTT from "list-to-tree";
-import pagination from "./../../util/pagination.util";
+
 
 export default class extends base {
 
@@ -11,11 +11,11 @@ export default class extends base {
     async index() {
 
         const page = this.query.page || 1;
-        const nav = await this.model('nav', { withRelated: ['parent'] }).getPageList(page);
+        const nav = await this.model('nav', { withRelated: ['parent'] }).findPage({}, {page: page});
 
         await this.render('nav_index', {
             nav: nav.data,
-            page: pagination(page, nav.pagination.rowCount)
+            page: this.page(page, nav.pagination.rowCount)
         });
     }
 
@@ -43,13 +43,13 @@ export default class extends base {
             this.json('/admin/nav/index', '保存成功');
         } else {
 
-            var parent = await this.model('nav').getQueryList(function(qb) {
+            var parent = await this.model('nav').findAll(function(qb) {
                 qb.where('pid', '=', '0');
                 qb.orderBy('rank', 'desc');
             });
 
             if (this.query.id) {
-                var nav = await this.model('nav').get({ id: this.query.id });
+                var nav = await this.model('nav').find({ id: this.query.id });
                 await this.render('nav_add', { nav: nav, parent: parent });
             } else {
                 await this.render('nav_add', { parent: parent });

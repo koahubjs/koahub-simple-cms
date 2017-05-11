@@ -1,5 +1,5 @@
 import base from "./base.controller";
-import pagination from "./../../util/pagination.util";
+
 
 export default class extends base {
 
@@ -10,11 +10,11 @@ export default class extends base {
     async index() {
 
         const page = this.query.page || 1;
-        const partner = await this.model('partner', {withRelated: ['file', 'qrcode']}).getPageList(page);
+        const partner = await this.model('partner', {withRelated: ['file', 'qrcode']}).findPage({}, {page: page});
 
         await this.render('partner_index', {
             partner: partner.data,
-            page: pagination(page, partner.pagination.rowCount)
+            page: this.page(page, partner.pagination.rowCount)
         });
     }
 
@@ -42,7 +42,7 @@ export default class extends base {
         } else {
 
             if (this.query.id) {
-                const partner = await this.model('partner', {withRelated: ['file', 'qrcode']}).get({id: this.query.id});
+                const partner = await this.model('partner', {withRelated: ['file', 'qrcode']}).find({id: this.query.id});
                 await this.render('partner_add', {partner: partner});
             } else {
                 await this.render('partner_add');

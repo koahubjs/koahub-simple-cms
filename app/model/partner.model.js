@@ -1,7 +1,7 @@
-import bookshelf from "./../data/bookshelf.init";
+
 import file from "./file.model";
 
-const model = bookshelf.Model.extend({
+const model = koahub.Model.extend({
     tableName: 'partner',
     hasTimestamps: true,
     file: function () {

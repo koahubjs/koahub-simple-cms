@@ -1,5 +1,5 @@
 import base from "./base.controller";
-import pagination from "./../../util/pagination.util";
+
 import { slugify } from 'transliteration';
 
 export default class extends base {
@@ -11,11 +11,11 @@ export default class extends base {
     async index() {
 
         const p = this.query.page || 1;
-        const page = await this.model('page').getPageList(p);
+        const page = await this.model('page').findPage({}, {page: p});
 
         await this.render('page_index', {
             page: page.data,
-            pagination: pagination(p, page.pagination.rowCount)
+            pagination: this.page(p, page.pagination.rowCount)
         });
     }
 
@@ -47,7 +47,7 @@ export default class extends base {
         } else {
 
             if (this.query.id) {
-                var page = await this.model('page').get({id: this.query.id});
+                var page = await this.model('page').find({id: this.query.id});
                 await this.render('page_add', {page: page});
             } else {
                 await this.render('page_add');

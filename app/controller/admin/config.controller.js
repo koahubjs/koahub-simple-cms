@@ -8,7 +8,7 @@ export default class extends base {
 
     async index() {
 
-        const config = await this.model('config').get({});
+        const config = await this.model('config').find({});
         await this.render('config_index', {config: config});
     }
 

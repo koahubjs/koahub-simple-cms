@@ -1,7 +1,7 @@
 export default {
-    port: 3000,
+    
+    port: 3001,
     default_module: 'admin',
-    pageNum: 25,
 
     session: {
     	key: 'koahub.js'

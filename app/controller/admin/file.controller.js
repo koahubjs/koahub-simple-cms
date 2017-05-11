@@ -2,7 +2,7 @@ import base from "./base.controller";
 import moment from "moment";
 import uuid from "node-uuid";
 import fs from "fs-promise";
-import pagination from "./../../util/pagination.util";
+
 
 export default class extends base {
 
@@ -12,11 +12,11 @@ export default class extends base {
 
     async index() {
         const page = this.query.page || 1;
-        const file = await this.model('file', {withRelated: []}).getPageList(page);
+        const file = await this.model('file', {withRelated: []}).findPage({}, {page: page});
 
         await this.render('file_index', {
             file: file.data,
-            page: pagination(page, file.pagination.rowCount, '/admin/file/index')
+            page: this.page(page, file.pagination.rowCount, '/admin/file/index')
         });
     }
 

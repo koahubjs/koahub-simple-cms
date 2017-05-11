@@ -1,6 +1,6 @@
 import { slugify } from 'transliteration';
 import base from "./base.controller";
-import pagination from "./../../util/pagination.util";
+
 
 export default class extends base {
 
@@ -11,11 +11,11 @@ export default class extends base {
     async index() {
 
         const page = this.query.page || 1;
-        const article = await this.model('article', {withRelated: ['file']}).getPageList(page);
+        const article = await this.model('article', {withRelated: ['file']}).findPage({}, {page: page});
 
         await this.render('article_index', {
             article: article.data,
-            page: pagination(page, article.pagination.rowCount)
+            page: this.page(page, article.pagination.rowCount)
         });
     }
 
@@ -47,7 +47,7 @@ export default class extends base {
         } else {
 
             if (this.query.id) {
-                var article = await this.model('article', {withRelated: ['file']}).get({id: this.query.id});
+                var article = await this.model('article', {withRelated: ['file']}).find({id: this.query.id});
                 await this.render('article_add', {article: article});
             } else {
                 await this.render('article_add');

@@ -1,6 +1,6 @@
 {
   "name": "koahub-simple-cms",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "koahub-simple-cms",
   "main": "app.js",
   "scripts": {
@@ -27,9 +27,10 @@
     "fs-promise": "^1.0.0",
     "handlebars-helpers": "^0.8.0",
     "knex": "^0.12.6",
-    "koahub": "github:koahubjs/koahub",
-    "koahub-cli": "github:koahubjs/koahub-cli",
-    "koahub-handlebars": "github:koahubjs/koahub-handlebars",
+    "koahub": "koahubjs/koahub",
+    "koahub-cli": "koahubjs/koahub-cli",
+    "koahub-handlebars": "koahubjs/koahub-handlebars",
+    "koahub-mysql": "koahubjs/koahub-mysql",
     "list-to-tree": "^1.0.0",
     "md5": "^2.2.1",
     "mysql": "^2.13.0",

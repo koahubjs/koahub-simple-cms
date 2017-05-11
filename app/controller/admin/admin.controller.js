@@ -1,5 +1,5 @@
 import base from "./base.controller";
-import pagination from "./../../util/pagination.util";
+
 import md5 from "md5";
 
 export default class extends base {
@@ -11,11 +11,11 @@ export default class extends base {
     async index() {
 
         const page = this.query.page || 1;
-        const admin = await this.model('admin').getPageList(page);
+        const admin = await this.model('admin').findPage({}, {page: page});
 
         await this.render('admin_index', {
             admin: admin.data,
-            page: pagination(page, admin.pagination.rowCount)
+            page: this.page(page, admin.pagination.rowCount)
         });
     }
 
@@ -52,7 +52,7 @@ export default class extends base {
         } else {
 
             if (this.query.id) {
-                var admin = await this.model('admin').get({id: this.query.id});
+                var admin = await this.model('admin').find({id: this.query.id});
                 await this.render('admin_add', {admin: admin});
             } else {
                 await this.render('admin_add');

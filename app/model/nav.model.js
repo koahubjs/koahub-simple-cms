@@ -1,11 +1,11 @@
-import bookshelf from "./../data/bookshelf.init";
 
-const parent = bookshelf.Model.extend({
+
+const parent = koahub.Model.extend({
     tableName: 'nav',
     hasTimestamps: true
 });
 
-const model = bookshelf.Model.extend({
+const model = koahub.Model.extend({
     tableName: 'nav',
     hasTimestamps: true,
     parent: function () {

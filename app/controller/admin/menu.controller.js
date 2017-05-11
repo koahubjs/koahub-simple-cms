@@ -8,7 +8,7 @@ export default class extends base {
 
     async index() {
 
-        const menu = await this.model('menu', {withRelated: ['file']}).getQueryList();
+        const menu = await this.model('menu', {withRelated: ['file']}).findAll();
         await this.render('menu_index', {menu: menu});
     }
 
@@ -38,7 +38,7 @@ export default class extends base {
         }else{
 
             if(this.query.id){
-                var menu = await this.model('menu').get({id: this.query.id});
+                var menu = await this.model('menu').find({id: this.query.id});
                 await this.render('menu_add',{menu: menu});
             }else{
                 await this.render('menu_add');

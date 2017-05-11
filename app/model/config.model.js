@@ -1,6 +1,6 @@
-import bookshelf from "./../data/bookshelf.init";
 
-const model = bookshelf.Model.extend({
+
+const model = koahub.Model.extend({
     tableName: 'config',
     hasTimestamps: true
 });

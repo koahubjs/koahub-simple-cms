@@ -11,13 +11,13 @@ export default class extends koahub.controller {
 
         if (this.isPost()) {
             const data = this.post;
-            if (this.session.verify != data.verify.toLowerCase()) {
-                this.redirect('/admin/public/login?err=' + encodeURI('验证码错误'));
-                return;
-            }
+            // if (this.session.verify != data.verify.toLowerCase()) {
+            //     this.redirect('/admin/public/login?err=' + encodeURI('验证码错误'));
+            //     return;
+            // }
             const username = data.username;
             const password = md5(data.password);
-            const admin = await this.model('admin', {withRelated: []}).get({username: username, password: password});
+            const admin = await this.model('admin', {withRelated: []}).find({username: username, password: password});
 
             if (admin && admin.status) {
                 this.session.adminId = admin.id;

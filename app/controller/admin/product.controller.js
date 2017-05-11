@@ -1,5 +1,5 @@
 import base from "./base.controller";
-import pagination from "./../../util/pagination.util";
+
 
 export default class extends base {
 
@@ -10,11 +10,11 @@ export default class extends base {
     async index() {
 
         const page = this.query.page || 1;
-        const product = await this.model('product', {withRelated: ['file']}).getPageList(page);
+        const product = await this.model('product', {withRelated: ['file']}).findPage({}, {page: page});
 
         await this.render('product_index', {
             product: product.data,
-            page: pagination(page, product.pagination.rowCount)
+            page: this.page(page, product.pagination.rowCount)
         });
     }
 
@@ -46,7 +46,7 @@ export default class extends base {
         } else {
 
             if (this.query.id) {
-                var product = await this.model('product', {withRelated: ['file']}).get({id: this.query.id});
+                var product = await this.model('product', {withRelated: ['file']}).find({id: this.query.id});
                 await this.render('product_add', {product: product});
             } else {
                 await this.render('product_add');
