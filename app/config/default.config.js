@@ -1,15 +1,7 @@
 export default {
     
-    port: 3001,
+    port: 3000,
     default_module: 'admin',
-
-    session: {
-    	key: 'koahub.js'
-    },
-
-    static: {
-        dir: 'www'
-    },
 
     loader: {
         "models": {

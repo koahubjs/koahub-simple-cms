@@ -1,14 +1,15 @@
 module.exports = {
 	
-	session: {
+	'koa-session2': {
     	key: 'koahub.js'
     },
 
-    static: {
-        dir: 'www'
+    'koa-static-cache': {
+        dir: 'www',
+        dynamic: true
     },
 
-    mysql: {
+    'koahub-mysql': {
 	    "type": "mysql",
 	    "host": "127.0.0.1",
 	    "user": "root",
