@@ -11,7 +11,7 @@ export default class extends base {
     async index() {
 
         const page = this.query.page || 1;
-        const article = await this.model('article', {withRelated: ['file']}).findPage({}, {page: page});
+        const article = await this.model('article').findPage({}, {page: page,withRelated: ['file']});
 
         await this.render('article_index', {
             article: article.data,
